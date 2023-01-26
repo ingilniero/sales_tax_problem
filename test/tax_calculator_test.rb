@@ -50,4 +50,22 @@ class TaxCalculatorTest < Minitest::Test
 
     assert_equal 9.75, sale_tax
   end
+
+  def test_import_duty_tax_all_goods
+    product = Product.new(name: "imported bottle of perfume", price: 27.99)
+
+    calculator = TaxCalculator.new
+    sale_tax = calculator.calculate_sale_tax(product)
+
+    assert_equal 32.16, sale_tax
+  end
+
+  def test_import_duty_tax_for_food
+    product = Product.new(name: "imported box of chocolates", price: 10.00)
+
+    calculator = TaxCalculator.new
+    sale_tax = calculator.calculate_sale_tax(product)
+
+    assert_equal 10.5, sale_tax
+  end
 end

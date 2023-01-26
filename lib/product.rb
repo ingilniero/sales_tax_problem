@@ -5,7 +5,14 @@ class Product
     @name = name
     @price = price
     @type = set_type
+    @imported = tag_imported
   end
+
+  def imported?
+    @imported
+  end
+
+  private
 
   def set_type
     case name
@@ -18,5 +25,9 @@ class Product
     else
       "Unknown"
     end
+  end
+
+  def tag_imported
+    @imported = name&.include?("imported")
   end
 end

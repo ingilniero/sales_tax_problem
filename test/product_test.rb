@@ -41,4 +41,12 @@ class ProductTest < Minitest::Test
     product =  Product.new(name: "packet of headache pills", price: 12.49)
     assert_equal "MedicalProduct", product.type
   end
+
+  def test_tag_imported_product
+    product =  Product.new(name: "book", price: 12.49)
+    refute product.imported?
+
+    product =  Product.new(name: "imported book", price: 12.49)
+    assert product.imported?
+  end
 end
