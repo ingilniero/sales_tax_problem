@@ -18,4 +18,27 @@ class ProductTest < Minitest::Test
     product =  Product.new(price: 12.49)
     assert_equal 12.49, product.price
   end
+
+  def test_can_get_the_product_type_based_on_the_name
+    product =  Product.new
+    assert_equal "Unknown", product.type
+
+    product =  Product.new(name: "book", price: 12.49)
+    assert_equal "Book", product.type
+
+    product =  Product.new(name: "music CD", price: 12.49)
+    assert_equal "Unknown", product.type
+
+    product =  Product.new(name: "chocolate bar", price: 12.49)
+    assert_equal "Food", product.type
+
+    product =  Product.new(name: "imported box of chocolates", price: 12.49)
+    assert_equal "Food", product.type
+
+    product =  Product.new(name: "imported bottle of perfume", price: 12.49)
+    assert_equal "Unknown", product.type
+
+    product =  Product.new(name: "packet of headache pills", price: 12.49)
+    assert_equal "MedicalProduct", product.type
+  end
 end
