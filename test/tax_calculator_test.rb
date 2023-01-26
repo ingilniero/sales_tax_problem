@@ -12,7 +12,7 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 11, sale_tax
+    assert_equal 1, sale_tax
   end
 
   def test_sale_tax_get_rounded_to_the_nearest_0_05
@@ -21,7 +21,7 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 11, sale_tax
+    assert_equal 1, sale_tax
   end
 
   def test_basic_sale_tax_for_all_goods
@@ -30,7 +30,7 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 16.49, sale_tax
+    assert_equal 1.5, sale_tax
   end
 
   def test_no_sale_tax_for_books
@@ -39,7 +39,7 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 12.49, sale_tax
+    assert_equal 0, sale_tax
   end
 
   def test_no_sale_tax_for_food
@@ -48,7 +48,7 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 0.85, sale_tax
+    assert_equal 0, sale_tax
   end
 
   def test_no_sale_tax_for_medical_products
@@ -57,16 +57,23 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 9.75, sale_tax
+    assert_equal 0, sale_tax
   end
 
   def test_import_duty_tax_all_goods
+    product = Product.new(name: "imported bottle of perfume", price: 47.50)
+
+    calculator = TaxCalculator.new
+    sale_tax = calculator.calculate_sale_tax(product)
+
+    assert_equal 7.15, sale_tax
+
     product = Product.new(name: "imported bottle of perfume", price: 27.99)
 
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 32.19, sale_tax
+    assert_equal 4.2, sale_tax
   end
 
   def test_import_duty_tax_for_food
@@ -75,6 +82,6 @@ class TaxCalculatorTest < Minitest::Test
     calculator = TaxCalculator.new
     sale_tax = calculator.calculate_sale_tax(product)
 
-    assert_equal 11.85, sale_tax
+    assert_equal 0.6, sale_tax
   end
 end
