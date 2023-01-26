@@ -3,8 +3,8 @@
 # SalesTaxProblem
 
 - [Problem](#problem-statemet)
-- [Installation](#instalation)
-- [Test project](#test-project)
+- [Installation](#installation)
+- [Test project](#testing)
 
 ## General Requirements
 Use either Ruby or Javascript. If you feel more comfortable with another
@@ -22,10 +22,12 @@ haven't completed the challenge within the allotted time, please submit the
 work you have completed. Focus on implementing the requirements with the best
 code you can produce within the given timeframe.
 
-## Problem Statement This problem requires some kind of input. You are free to
-implement any mechanism for feeding the input into your solution. You should
-provide suficient evidence that your solution is complete by, as a minimum,
-indicating that it works correctly against the supplied test data.
+## Problem Statement
+
+This problem requires some kind of input. You are free to implement any
+mechanism for feeding the input into your solution. You should provide
+suficient evidence that your solution is complete by, as a minimum, indicating
+that it works correctly against the supplied test data.
 
 Basic sales tax is applicable at a rate of 10% on all goods, except books,
 food, and medical products that are exempt. Import duty is an additional sales
@@ -121,13 +123,19 @@ the receipt details for these shopping baskets:
 </table>
 
 
-## Instalation
+## Installation
 
 Recomend use this versions:
 
-- ruby version `3.1.1`
+- ruby version `3.0.2`
 - bundle version `2.3.7`
 
 ```bash
   bundle install
+```
+
+## Testing
+
+```bash
+  ruby -Ilib -e 'ARGV.each { |f| require f }' ./test/*_test.rb
 ```
